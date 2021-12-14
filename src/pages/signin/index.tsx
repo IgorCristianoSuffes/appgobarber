@@ -1,4 +1,7 @@
-import React from "react";
+import React, { useCallback, useRef } from "react";
+import { useNavigation } from "@react-navigation/native";
+import { Form } from "@unform/mobile";
+import { FormHandles } from "@unform/core";
 import {
     Image, 
     View, 
@@ -23,6 +26,13 @@ import {
 
 } from  './styles';
 const SignIn: React.FC = () => {
+    const formRef = useRef<FormHandles>(null);
+    const navigation = useNavigation();
+
+    const handleSignIn = useCallback((data: object) => {
+        console.log(data);
+    }, []);
+
     return (
         <>
             <KeyboardAvoidingView
@@ -42,12 +52,17 @@ const SignIn: React.FC = () => {
                             <Title>Faça seu logon</Title>
                         </View>
                         
+                        <Form ref={formRef} onSubmit={handleSignIn} >
+                            <Input name="email" icon="mail" placeholder="E-mail" />
+                            <Input name="password" icon="lock" placeholder="Senha" />
+                            <Button onPress={() => {
+                                formRef.current?.submitForm()
+                            }} >Entrar</Button>
+                        </Form>
                         
-                        <Input name="email" icon="mail" placeholder="E-mail" />
-                        <Input name="password" icon="lock" placeholder="Senha" />
-                        <Button onPress={() => {}} >Entrar</Button>
-
-                        <ForgotPassword onPress={() => {}}>
+                        <ForgotPassword onPress={() => {
+                            
+                        }}>
                             <ForgotPasswordText>
                                 Esqueci minha senha
                             </ForgotPasswordText>
@@ -58,7 +73,7 @@ const SignIn: React.FC = () => {
                 
             </KeyboardAvoidingView>
 
-            <CreateAccountButton onPress={() => {}}>
+            <CreateAccountButton onPress={() => navigation.navigate('SignUp')}>
                 <Icon name="log-in" size={20} color="#ff9000" />
                 <CreateAccountButtonText>Criar uma conta</CreateAccountButtonText>
             </CreateAccountButton>
@@ -68,5 +83,3 @@ const SignIn: React.FC = () => {
 }
 
 export default SignIn;
-
-// importando fontes extrenas
