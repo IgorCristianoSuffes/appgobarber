@@ -28,8 +28,6 @@ const Input: React.ForwardRefRenderFunction<InputRef, InputProps> = ({ name, ico
         }
     }));
 
-    //usabilidade em formularios
-
     useEffect(()=> {
         registerField<string>({
             name: fieldName,
