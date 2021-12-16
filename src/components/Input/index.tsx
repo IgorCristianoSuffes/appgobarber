@@ -16,7 +16,7 @@ interface InputRef {
     focus(): void;
 }
 
-const Input: React.RefForwardingComponent<InputRef, InputProps> = ({ name, icon, ...rest }, ref) => {
+const Input: React.ForwardRefRenderFunction<InputRef, InputProps> = ({ name, icon, ...rest }, ref) => {
     const inputElementRef = useRef<any>(null);
 
     const { registerField, defaultValue = '', fieldName, error } = useField(name);
@@ -25,8 +25,10 @@ const Input: React.RefForwardingComponent<InputRef, InputProps> = ({ name, icon,
     useImperativeHandle(ref, () => ({
         focus() {
             inputElementRef.current.focus();
-        },
+        }
     }));
+
+    //usabilidade em formularios
 
     useEffect(()=> {
         registerField<string>({

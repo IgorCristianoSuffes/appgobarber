@@ -8,7 +8,7 @@ import {
     KeyboardAvoidingView, 
     Platform, 
     ScrollView,
-    TextInput
+    TextInput,
 } from "react-native";
 import Icon from "react-native-vector-icons/Feather";
 
