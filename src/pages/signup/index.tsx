@@ -66,6 +66,8 @@ const SignUp: React.FC = () => {
             navigation.goBack();
         } catch (err) {
 
+            console.log('aqui ó');
+
             if (err instanceof Yup.ValidationError) {
 
                 const err2 : ValidationError | any = err;
