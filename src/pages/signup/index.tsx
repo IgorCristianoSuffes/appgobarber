@@ -84,7 +84,7 @@ const SignUp: React.FC = () => {
                 'Ocorreu um erro ao fazer o cadastro.',
             );
         }
-    }, []);
+    }, [navigation]);
 
     return (
         <>
