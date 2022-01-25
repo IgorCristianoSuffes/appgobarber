@@ -1,3 +1,3 @@
 // teste
 // instalando dependencias
-/asd asdasd
+// problemas de conexão
